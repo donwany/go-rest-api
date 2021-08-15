@@ -3,14 +3,13 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"log"
-	"net/http"
-
 	"github.com/donwany/go-rest-api/helper"
 	"github.com/donwany/go-rest-api/models"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"log"
+	"net/http"
 )
 
 //Connection mongoDB with helper class
@@ -174,6 +173,6 @@ func main() {
 	r.HandleFunc("/api/books/{id}", deleteBook).Methods("DELETE")
 
 	config := helper.GetConfiguration()
-	log.Fatal(http.ListenAndServe(config.Port, r))
+	log.Fatal(http.ListenAndServe("localhost:" + config.Port, r))
 
 }
